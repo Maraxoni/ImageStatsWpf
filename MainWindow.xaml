@@ -1,0 +1,83 @@
+﻿<Window x:Class="ImageStatsWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Image Stats - POwB Lab1" Height="720" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="8" Grid.Row="0" VerticalAlignment="Center" >
+            <Button Name="BtnLoad" Click="BtnLoad_Click" Margin="4">Wczytaj obraz</Button>
+            <TextBlock Name="TbFileName" VerticalAlignment="Center" Margin="8,0,0,0"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="320"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Image area with overlaying canvas for selection -->
+            <ScrollViewer Grid.Column="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="#FFEEEEEE">
+                <Grid>
+                    <Image Name="ImageViewer" Stretch="None" />
+                    <Canvas Name="OverlayCanvas" IsHitTestVisible="True"
+                            Background="Transparent"
+                            MouseLeftButtonDown="OverlayCanvas_MouseLeftButtonDown"
+                            MouseMove="OverlayCanvas_MouseMove"
+                            MouseLeftButtonUp="OverlayCanvas_MouseLeftButtonUp"/>
+                </Grid>
+            </ScrollViewer>
+
+            <!-- Stats panel -->
+            <Border Grid.Column="1" Margin="8" Padding="8" Background="#FFF8F8F8" BorderBrush="#FFCCCCCC" BorderThickness="1">
+                <StackPanel>
+                    <TextBlock FontSize="16" FontWeight="Bold" Margin="0,0,0,8">Statystyki kanałów (R, G, B)</TextBlock>
+                    <TextBlock Name="TbSelection" Text="Brak zaznaczenia" Margin="0,0,8,8"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="" />
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="R" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="0" Grid.Column="2" Text="G" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="0" Grid.Column="3" Text="B" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Średnia:"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Name="TbMeanR" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="1" Grid.Column="2" Name="TbMeanG" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="1" Grid.Column="3" Name="TbMeanB" HorizontalAlignment="Center"/>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Mediana:"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Name="TbMedR" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="2" Grid.Column="2" Name="TbMedG" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="2" Grid.Column="3" Name="TbMedB" HorizontalAlignment="Center"/>
+
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Odch.std.:"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" Name="TbStdR" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="3" Grid.Column="2" Name="TbStdG" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="3" Grid.Column="3" Name="TbStdB" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <Button Name="BtnClearSelection" Click="BtnClearSelection_Click" Margin="0,12,0,0">Wyczyść zaznaczenie</Button>
+
+                    <TextBlock Margin="0,12,0,0" FontSize="12" TextWrapping="Wrap">
+                        Instrukcja: wczytaj obraz, przytrzymaj lewy przycisk myszy i przeciągnij aby zaznaczyć prostokąt. Po puszczeniu myszy statystyki zostaną wyliczone.
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
