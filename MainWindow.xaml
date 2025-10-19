@@ -42,6 +42,7 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="70"/>
@@ -65,10 +66,15 @@
                         <TextBlock Grid.Row="2" Grid.Column="2" Name="TbMedG" HorizontalAlignment="Center"/>
                         <TextBlock Grid.Row="2" Grid.Column="3" Name="TbMedB" HorizontalAlignment="Center"/>
 
-                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Std Dev:"/>
-                        <TextBlock Grid.Row="3" Grid.Column="1" Name="TbStdR" HorizontalAlignment="Center"/>
-                        <TextBlock Grid.Row="3" Grid.Column="2" Name="TbStdG" HorizontalAlignment="Center"/>
-                        <TextBlock Grid.Row="3" Grid.Column="3" Name="TbStdB" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Variance:"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" Name="TbVarR" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="3" Grid.Column="2" Name="TbVarG" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="3" Grid.Column="3" Name="TbVarB" HorizontalAlignment="Center"/>
+
+                        <TextBlock Grid.Row="4" Grid.Column="0" Text="Std Dev:"/>
+                        <TextBlock Grid.Row="4" Grid.Column="1" Name="TbStdR" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="4" Grid.Column="2" Name="TbStdG" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="4" Grid.Column="3" Name="TbStdB" HorizontalAlignment="Center"/>
                     </Grid>
 
                     <Button Name="BtnClearSelection" Click="BtnClearSelection_Click" Margin="0,12,0,0">Clear Selection</Button>

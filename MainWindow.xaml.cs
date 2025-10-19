@@ -190,6 +190,10 @@ namespace ImageStatsWpf
             TbMedG.Text = stats.MedianG.ToString("0");
             TbMedB.Text = stats.MedianB.ToString("0");
 
+            TbVarR.Text = stats.VarianceR.ToString("0.00");
+            TbVarG.Text = stats.VarianceG.ToString("0.00");
+            TbVarB.Text = stats.VarianceB.ToString("0.00");
+
             TbStdR.Text = stats.StdDevR.ToString("0.00");
             TbStdG.Text = stats.StdDevG.ToString("0.00");
             TbStdB.Text = stats.StdDevB.ToString("0.00");

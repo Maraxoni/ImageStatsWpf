@@ -9,9 +9,9 @@ namespace ImageStatsWpf
     public class RgbStats
     {
         public double MeanR, MeanG, MeanB;
-        public double StdDevR, StdDevG, StdDevB;
-        public double VarianceR, VarianceG, VarianceB;
         public double MedianR, MedianG, MedianB;
+        public double VarianceR, VarianceG, VarianceB;
+        public double StdDevR, StdDevG, StdDevB;
     }
 
     public static class ImageProcessor
