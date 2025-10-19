@@ -16,7 +16,7 @@ namespace ImageStatsWpf
 
     public static class ImageProcessor
     {
-        // Zakładamy PixelFormats.Bgra32 dla kopiowanych pikseli
+        // Assume PixelFormats.Bgra32 for copied pixels
         public static RgbStats GetRgbStatistics(BitmapSource src, int x, int y, int width, int height)
         {
             // Convert or ensure PixelFormat is Bgra32
@@ -36,7 +36,7 @@ namespace ImageStatsWpf
             }
             catch (Exception ex)
             {
-                throw new Exception("Błąd kopiowania danych pikseli: " + ex.Message);
+                throw new Exception("Error copying pixel data: " + ex.Message);
             }
 
             var listR = new List<int>(width * height);

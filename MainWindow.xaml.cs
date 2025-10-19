@@ -1,6 +1,6 @@
 ﻿using Microsoft.Win32;
 using SkiaSharp;
-using SkiaSharp.Extended.Svg;
+using Svg.Skia;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -71,21 +71,21 @@ namespace ImageStatsWpf
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Błąd wczytywania obrazu: " + ex.Message);
+                    MessageBox.Show("Error loading image: " + ex.Message);
                 }
             }
         }
 
         private BitmapSource LoadSvgAsBitmap(string path)
         {
-            // render SVG using Svg.Skia to SKBitmap and convert to BitmapSource
-            var svg = new SkiaSharp.Extended.Svg.SKSvg();
+            // render SVG
+            var svg = new SKSvg();
             using (var stream = File.OpenRead(path))
             {
                 svg.Load(stream);
             }
 
-            // decide bitmap size - użyj wymiarów z SVG viewBox lub szerokości 800 jeśli brak
+            // decide bitmap size - use dimensions from SVG viewBox or width 800 if missing
             var svgRect = svg.Picture?.CullRect ?? SKRect.Create(800, 600);
             int width = (int)Math.Max(1, svgRect.Width);
             int height = (int)Math.Max(1, svgRect.Height);
@@ -178,7 +178,7 @@ namespace ImageStatsWpf
 
         private void ComputeAndShowStats(int x, int y, int w, int h)
         {
-            TbSelection.Text = $"Zaznaczenie: X={x}, Y={y}, W={w}, H={h}";
+            TbSelection.Text = $"Selection: X={x}, Y={y}, W={w}, H={h}";
 
             var stats = ImageProcessor.GetRgbStatistics(loadedBitmap, x, y, w, h);
 
@@ -203,7 +203,7 @@ namespace ImageStatsWpf
 
         private void ClearStats()
         {
-            TbSelection.Text = "Brak zaznaczenia";
+            TbSelection.Text = "No selection";
             TbMeanR.Text = TbMeanG.Text = TbMeanB.Text = "-";
             TbMedR.Text = TbMedG.Text = TbMedB.Text = "-";
             TbStdR.Text = TbStdG.Text = TbStdB.Text = "-";
